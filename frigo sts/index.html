@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRIGO STS - Montaža i servis klima uređaja Zagreb</title>
+  <meta name="description" content="FRIGO STS Zagreb – montaža, servis i održavanje klima uređaja i klimatizacijskih sustava. Profesionalno i pouzdano.">
+  <meta name="keywords" content="klima uređaji Zagreb, servis klima, montaža klima, klimatizacija, FRIGO STS, Dubrava">
+  <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* --- Osnovni stilovi --- */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header, nav {
+      background-color: #004080;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.5em;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* --- Slider --- */
+    .slider {
+      position: relative;
+      height: 70vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      background: rgba(0,0,0,0.4);
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 700px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .hero-text p {
+      font-size: 1.1em;
+      margin-bottom: 1em;
+    }
+
+    .btn-ponuda {
+      display: inline-block;
+      background-color: #004080;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn-ponuda:hover {
+      background-color: #0066cc;
+    }
+
+    /* --- Sadržaj --- */
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    section {
+      background: #fff;
+      margin-bottom: 30px;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #004080;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #004080;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* --- Kontakt kartica --- */
+    .contact-card {
+      background-color: #e6f0ff;
+      padding: 15px 20px;
+      border-radius: 10px;
+    }
+
+    .contact-card p {
+      margin: 10px 0;
+    }
+
+    .contact-card a {
+      color: #004080;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Donji dio --- */
+    .bottom-section {
+      background-color: #004080;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 30px 15px;
+      border-radius: 0;
+    }
+
+    .bottom-section div {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px;
+    }
+
+    .bottom-section h3 {
+      color: #ffcc00;
+    }
+
+    footer {
+      background-color: #002d66;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9em;
+    }
+
+    /* --- Modal --- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    .modal-content h3 {
+      color: #004080;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .modal-content button {
+      margin-top: 15px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .modal-content button:hover {
+      background-color: #0066cc;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .hero-text h1 {
+        font-size: 1.8em;
+      }
+
+      .bottom-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigacija -->
+  <nav>
+    <a href="#usluge"><i class="fas fa-tools"></i> Usluge</a>
+    <a href="#o-nama"><i class="fas fa-building"></i> O nama</a>
+    <a href="#kontakt"><i class="fas fa-envelope"></i> Kontakt</a>
+    <a href="blog/blog.index.html"><i class="fas fa-blog"></i> Blog</a>
+  </nav>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slide active" style="background-image:url('slide1.jpg');"></div>
+    <div class="slide" style="background-image:url('slide2.jpg');"></div>
+    <div class="slide" style="background-image:url('slide3.jpg');"></div>
+
+    <div class="hero-text">
+      <h1>FRIGO STS Zagreb</h1>
+      <p>Montaža, servis i održavanje klima uređaja i klimatizacijskih sustava.</p>
+      <a href="#" class="btn-ponuda" id="openModal"><i class="fas fa-paper-plane"></i> Zatraži ponudu</a>
+    </div>
+  </div>
+
+  <!-- Glavni sadržaj -->
+  <main>
+    <section id="usluge">
+      <h2><i class="fas fa-tools"></i> Naše usluge</h2>
+      <ul>
+        <li>Prodaja i ugradnja klima uređaja</li>
+        <li>Servis i održavanje</li>
+        <li>Klimatski sistemi</li>
+        <li>Savjetovanje i podrška</li>
+        <li>Hitne intervencije</li>
+        <li>Servis rashladne komore</li>
+      </ul>
+    </section>
+
+   <section id="o-nama">
+  <h2><i class="fas fa-building"></i> O nama</h2>
+  <p><strong>FRIGO STS – Vaš ovlašteni serviser klima i rashladnih sustava</strong></p>
+  <p>FRIGO STS je tvrtka koja već 2 godine pruža profesionalne usluge u području klimatizacije i rashladnih sustava, oslonjena na iskustvo našeg direktora koji u industriji djeluje više od 20 godina. Kao ovlašteni serviser renomiranih marki klima uređaja, uključujući Midea, Samsung, Mitsubishi, Toshiba, Daikin, Panasonic i druge, pružamo kompletne usluge prodaje, montaže i servisa.</p>
+  <p>Naš tim stručnjaka osigurava da svaki projekt – od stambenih i poslovnih klima sustava do industrijskih rashladnih komora – bude izveden precizno, učinkovito i u skladu s najvišim standardima.</p>
+  <p>Pored klima uređaja, specijalizirani smo i za projektiranje, ugradnju i održavanje rashladnih sustava i komora, pružajući pouzdana rješenja za trgovine, restorane, industriju i sve koji trebaju profesionalno rashlađivanje.</p>
+  <p>Bilo da je riječ o novoj instalaciji, redovitom servisu ili hitnom popravku, FRIGO STS je vaš pouzdan partner za sve potrebe klimatizacije i rashladnih sustava – kvalitetno, brzo i profesionalno.</p>
+</section>
+
+
+    <section id="kontakt">
+      <h2><i class="fas fa-envelope"></i> Kontakt</h2>
+      <div class="contact-card">
+        <p><i class="fas fa-map-marker-alt"></i> Čopci 23a, Zagreb</p>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+385955912874">+385 95 591 2874</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@frigosts.hr">info@frigosts.hr</a></p>
+        <p><i class="fas fa-clock"></i> Ponedjeljak – Petak: 8:00 – 16:00</p>
+      </div>
+
+      <div style="margin-top:20px;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.825!2d15.9797!3d45.8203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475cde1a2b3c4d5f%3A0xabcdef1234567890!2s%C4%8Copci%2023a%2C%20Zagreb!5e0!3m2!1shr!2shr!4v1698412345678!5m2!1shr!2shr"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Donji dio -->
+  <div class="bottom-section">
+    <div>
+      <h3>LOKACIJA</h3>
+      <p>Čopci 23a, Zagreb</p>
+    </div>
+    <div>
+      <h3>PODACI O TVRTKI</h3>
+      <p>FRIGO STS d.o.o.</p>
+      <p>OIB: 62649068768</p>
+      <p>Tel: +385 95 591 2874</p>
+      <p>Email: info@frigosts.hr</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 FRIGO STS Zagreb – Sva prava pridržana
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modalForm">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h3>Zatraži ponudu</h3>
+      <form action="https://formspree.io/f/mqagepbp" method="POST">
+        <input type="text" name="name" placeholder="Ime i prezime" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Telefon" required>
+        <textarea name="message" placeholder="Poruka" rows="4" required></textarea>
+        <button type="submit">Pošalji</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Slider
+    let slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 4000);
+
+    // Modal
+    const modal = document.getElementById('modalForm');
+    const openModal = document.getElementById('openModal');
+    const closeModal = document.getElementById('closeModal');
+    openModal.addEventListener('click', e => { e.preventDefault(); modal.style.display = 'flex'; });
+    closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+    window.addEventListener('click', e => { if (e.target == modal) modal.style.display = 'none'; });
+  </script>
+</body>
+</html>

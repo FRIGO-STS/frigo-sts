@@ -1,0 +1,127 @@
+/* --- Opći stilovi --- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #004080;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* --- Lista blogova na početnoj stranici --- */
+.container.blog-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.blog-item {
+    background-color: #fff;
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+}
+
+.blog-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.blog-item-content {
+    padding: 15px;
+}
+
+.blog-item-content h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #004080;
+}
+
+.blog-item-content p {
+    font-size: 0.95em;
+    margin-bottom: 15px;
+}
+
+/* --- Gumb "Pročitaj više" --- */
+.read-more a, .back-button a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #004080;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.read-more a:hover, .back-button a:hover {
+    background-color: #0066cc;
+}
+
+/* --- Pojedinačni blogovi --- */
+.container.blog-content {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.container.blog-content h2 {
+    color: #004080;
+    margin-top: 20px;
+}
+
+.container.blog-content ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.container.blog-content ul li {
+    margin-bottom: 8px;
+}
+
+/* --- Gumb "Nazad na listu blogova" --- */
+.back-button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* --- Responsive --- */
+@media screen and (max-width: 1000px) {
+    .container.blog-list {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .blog-item {
+        width: 90%;
+    }
+
+    .container.blog-content {
+        padding: 20px;
+    }
+}
